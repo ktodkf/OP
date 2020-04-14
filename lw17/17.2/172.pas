@@ -21,11 +21,10 @@ BEGIN  {ReadDigit}
 END;{ReadDigit}
 
 PROCEDURE ReadNumber(VAR F: TEXT; VAR N: INTEGER);
-{Ïðåîáðàçóåò ñòðîêó öèôð èç ôàéëà äî ïåðâîãî íåöèôðîâîãî ñèìâîëà,
- â ñîîòâåòñòâóþùåå öåëîå ÷èñëî N}
+{Преобазует строку цифр из файла до первого нецифрового символа,
+ в соответствующее целое число N}
 VAR
   Digit: INTEGER; 
-  Owerflow: BOOLEAN;
 BEGIN{ReadNumber}
   Digit := 0;
   N:=0; 
