@@ -21,40 +21,32 @@ BEGIN  {ReadDigit}
 END;{ReadDigit}
 
 PROCEDURE ReadNumber(VAR F: TEXT; VAR N: INTEGER);
-{Преобразует строку цифр из файла до первого нецифрового символа,
- в соответствующее целое число N}
+{ГЏГ°ГҐГ®ГЎГ°Г Г§ГіГҐГІ Г±ГІГ°Г®ГЄГі Г¶ГЁГґГ° ГЁГ§ ГґГ Г©Г«Г  Г¤Г® ГЇГҐГ°ГўГ®ГЈГ® Г­ГҐГ¶ГЁГґГ°Г®ГўГ®ГЈГ® Г±ГЁГ¬ГўГ®Г«Г ,
+ Гў Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГѕГ№ГҐГҐ Г¶ГҐГ«Г®ГҐ Г·ГЁГ±Г«Г® N}
 VAR
   Digit: INTEGER; 
   Owerflow: BOOLEAN;
 BEGIN{ReadNumber}
-  Owerflow := FALSE;
   Digit := 0;
-  N:=0;
-  ReadDigit(INPUT, Digit);
-  WHILE (NOT Owerflow) AND (Digit <> -1) 
+  N:=0; 
+  WHILE (NOT EOLN) AND (Digit <> -1) AND ( N <> -1)
   DO
     BEGIN 
-      IF (N <= MAXINT DIV 10)
-      THEN
-        BEGIN
-          N := N * 10;
-          IF (Digit <= MAXINT - N)
-          THEN  
-            N := N + Digit
-          ELSE 
-            Owerflow := TRUE
-        END
-      ELSE
-        Owerflow := TRUE; 
       ReadDigit(INPUT, Digit);
-    END;
-  IF Owerflow 
-  THEN     
-    N := -1
+      IF (Digit <> -1)
+      THEN 
+        IF (N < MAXINT DIV 10) OR (( MAXINT MOD 10 > Digit) AND (MAXINT DIV 10 = N))
+        THEN 
+          N := N * 10 + Digit
+        ELSE
+          IF(N > MAXINT DIV 10)
+          THEN     
+            N := -1
+    END        
 END;{ReadNumber}
 
 BEGIN {Digit}
+  I := 0;
   ReadNumber(INPUT, I);
   WRITELN(I)
 END. {Digit}
-
