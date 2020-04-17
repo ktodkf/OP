@@ -8,7 +8,7 @@ TYPE
   PROCEDURE WriteMonth (VAR FOut: TEXT; VAR Mo: Month); 
   
 IMPLEMENTATION 
-  PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);
+  PROCEDURE ReadMonth (VAR FIn: TEXT; VAR Mo: Month);
   VAR
     Ch1, Ch2, Ch3: CHAR;
   BEGIN{ReadMonth}
