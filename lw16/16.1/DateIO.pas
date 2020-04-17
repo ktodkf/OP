@@ -55,8 +55,8 @@ IMPLEMENTATION
         IF Mo= OCT THEN WRITE(FOut, 'OCT') ELSE
         IF Mo= NOV THEN WRITE(FOut, 'NOV') ELSE
         IF Mo= DEC THEN WRITE(FOut, 'DEC')  
-    ELSE
-      WRITE( 'NoMonth')
+        ELSE
+          WRITE( 'NoMonth')
   END;{WriteMonth}
 BEGIN{DateIO}
-END.{{DateIO}
+END.{DateIO}
