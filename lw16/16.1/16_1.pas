@@ -6,22 +6,22 @@ VAR
 BEGIN{SortMonth}
   ReadMonth(INPUT, Mo1);
   ReadMonth(INPUT, Mo2);
-  IF (Mo1= NoMonth) OR (Mo2= NoMonth)
+  IF (Mo1 = NoMonth) OR (Mo2 = NoMonth)
   THEN
-    WRITELN('Данные некорректны')
+    WRITELN('Р”Р°РЅРЅС‹Рµ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹')
   ELSE
-    IF Mo1= Mo2
+    IF Mo1 = Mo2
     THEN 
-      WRITELN('Месяцы равны')
+      WRITELN('РњРµСЃСЏС†С‹ СЂР°РІРЅС‹')
     ELSE
       BEGIN
         WriteMonth(OUTPUT, Mo1);
-        IF Mo1<Mo2
+        IF Mo1 < Mo2
         THEN
-          WRITE(' Предшествует за ')
+          WRITE('РџСЂРµРґС€РµСЃС‚РІСѓРµС‚ Р·Р°')
         ELSE
-          WRITE(' Следует за ');
+          WRITE('РЎР»РµРґСѓРµС‚ Р·Р°');
         WriteMonth(OUTPUT, Mo2);
         WRITELN
-       END;
-END.{SoGrtMonth}      
+      END;
+END.{SortMonth}      
