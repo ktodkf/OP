@@ -2,7 +2,7 @@ PROGRAM SortMonth(INPUT, OUTPUT);
 USES 
   DateIO;
 VAR
-  Mo1, Mo2: Month;
+  Mo1, Mo2 : Month;
 BEGIN{SortMonth}
   ReadMonth(INPUT, Mo1);
   ReadMonth(INPUT, Mo2);
