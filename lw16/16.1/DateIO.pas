@@ -17,7 +17,7 @@ IMPLEMENTATION
     THEN
       BEGIN
         READ (INPUT, Ch1);
-        IF NOT EOLN (FIn)
+        IF NOT EOLN(FIn)
         THEN
           BEGIN
             READ (INPUT, Ch2);
