@@ -4,11 +4,11 @@ INTERFACE
 TYPE 
     Month = (NoMonth, JAN, FEB, MAR, APR, MAY, JUN,
                       JUL, AUG, SEP, OCT, NOV, DEC); 
-  PROCEDURE ReadMonth (VAR FIn: TEXT; VAR Mo: Month);
-  PROCEDURE WriteMonth (VAR FOut: TEXT; VAR Mo: Month); 
+  PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);
+  PROCEDURE WriteMonth(VAR FOut: TEXT; VAR Mo: Month); 
   
 IMPLEMENTATION 
-  PROCEDURE ReadMonth (VAR FIn: TEXT; VAR Mo: Month);
+  PROCEDURE ReadMonth(VAR FIn: TEXT; VAR Mo: Month);
   VAR
     Ch1, Ch2, Ch3: CHAR;
   BEGIN{ReadMonth}
@@ -16,15 +16,15 @@ IMPLEMENTATION
     IF NOT EOLN(FIn)
     THEN
       BEGIN
-        READ (INPUT, Ch1);
+        READ(INPUT, Ch1);
         IF NOT EOLN(FIn)
         THEN
           BEGIN
-            READ (INPUT, Ch2);
+            READ(INPUT, Ch2);
             IF NOT EOLN(FIn)
             THEN
               BEGIN      
-                READ (INPUT, Ch3); 
+                READ(INPUT, Ch3); 
                 IF (Ch1 = 'J') AND (Ch2 = 'A') AND (Ch3 = 'N') THEN Mo := JAN ELSE
                 IF (Ch1 = 'F') AND (Ch2 = 'E') AND (Ch3 = 'B') THEN Mo := FEB ELSE
                 IF (Ch1 = 'M') AND (Ch2 = 'A') AND (Ch3 = 'R') THEN Mo := MAR ELSE
@@ -56,7 +56,7 @@ IMPLEMENTATION
         IF Mo = NOV THEN WRITE(FOut, 'NOV') ELSE
         IF Mo = DEC THEN WRITE(FOut, 'DEC')  
         ELSE
-          WRITE( 'NoMonth')
+          WRITE('NoMonth')
   END;{WriteMonth}
 BEGIN{DateIO}
 END.{DateIO}
