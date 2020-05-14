@@ -1,4 +1,4 @@
-PROGRAM Lexico1(INPUT, OUTPUT);
+PROGRAM Lexico(INPUT, OUTPUT);
 VAR
   Result, Ch: CHAR;
   F1, F2: TEXT;
@@ -13,7 +13,7 @@ BEGIN {Lexico}
   RESET(F1);
   RESET(F2);
   Result := '0';
-  WHILE (NOT EOLN(F1) AND NOT EOLN(F2)) AND (Result = '0')
+  WHILE (NOT EOF(F1) AND NOT EOF(F2)) AND (Result = '0')
   DO
     BEGIN
       READ(F1, Ch1);
@@ -24,28 +24,30 @@ BEGIN {Lexico}
       ELSE
         IF (Ch1 > Ch2) OR (EOF(F2))
         THEN {Ch1 > Ch2 или F2 короче F1}
-          Result := '2'
+          Result := '2';
+        IF EOF(F1) AND EOF(F2)
+        THEN 
+          Result :='0'  
     END {WHILE}
 END; {Lexico}
 
 BEGIN{Lexico1}
   REWRITE(F1);
-  REWRITE(F2);  
   WHILE NOT EOLN(INPUT)
   DO
     BEGIN
       READ(INPUT, Ch);
       WRITE(F1, Ch)
     END;
-    READLN(INPUT);
-    WHILE NOT EOLN(INPUT)
-    DO
-      BEGIN
-        READ(INPUT, Ch);
-        WRITE(F2, Ch)
-      END;
-    READLN(INPUT);
-    WRITELN(F1);
+  WRITELN(F1);
+  READLN;
+  REWRITE(F2);
+  WHILE NOT EOLN(INPUT)
+  DO
+    BEGIN
+      READ(INPUT, Ch);
+      WRITE(F2, Ch)
+    END;
     WRITELN(F2);
     Lexico(F1, F2, Result);
     WRITELN(Result)  
