@@ -51,4 +51,4 @@ BEGIN{Lexico1}
     WRITELN(F2);
     Lexico(F1, F2, Result);
     WRITELN(Result)  
-END.{Lexico1}
+END.{Lexico}
