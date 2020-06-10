@@ -9,7 +9,7 @@ BEGIN{Prime}
       Sieve := [Min..Max];
       Next := Min;
       Total := Min;
-      WRITELN('опнярше вхякю б дхюоюгнме дн ', Max, ': ');
+      WRITELN('п÷п═п·п║п╒п╚п∙ п╖п≤п║п⌡п░ п▓ п■п≤п░п÷п░п≈п·п²п∙ п■п· ', Max, ': ');
       WHILE Next <= Max
       DO 
         BEGIN
