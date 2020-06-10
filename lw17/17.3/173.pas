@@ -22,8 +22,8 @@ BEGIN  {ReadDigit}
 END;{ReadDigit}
 
 PROCEDURE ReadNumber(VAR F: TEXT; VAR N: INTEGER);
-{Преобразует строку цифр из файла до первого нецифрового символа,
- в соответствующее целое число N}
+{РџСЂРµРѕР±СЂР°Р·СѓРµС‚ СЃС‚СЂРѕРєСѓ С†РёС„СЂ РёР· С„Р°Р№Р»Р° РґРѕ РїРµСЂРІРѕРіРѕ РЅРµС†РёС„СЂРѕРІР°РЅРЅРѕРіРѕ СЃРёРјРІРѕР»Р°,
+РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРµ С†РµР»РѕРµ С†РёСЃР»Рѕ N}
 VAR
   Digit: INTEGER; 
 BEGIN{ReadNumber}
@@ -58,7 +58,7 @@ BEGIN
       Overflow := (CountDigit >= MAXINT - 1) OR (Digit = -1) OR (Sum > (MAXINT - Digit));
       IF Overflow
       THEN
-        WRITELN('Введено неверное значение или переполнение')
+        WRITELN('Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РёР»Рё РїРµСЂРµРїРѕР»РЅРµРЅРёРµ')
       ELSE
         BEGIN 
           CountDigit := CountDigit + 1;
@@ -82,7 +82,7 @@ BEGIN
           WRITELN('Average= ', Sum DIV CountDigit, '.', Sum MOD CountDigit * 100 DIV CountDigit);
         END
       ELSE
-        WRITELN('Ничего не введено')
+        WRITELN('РќРёС‡РµРіРѕ РЅРµ РІРІРµРґРµРЅРѕ')
     END    
 END.  
       
