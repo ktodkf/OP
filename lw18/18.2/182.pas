@@ -44,7 +44,7 @@ BEGIN {AverageScore}
           READ(NextScore);
           IF (NextScore < 0) OR (NextScore > 100)
           THEN
-            WRITELN('Некорректные данные: ', NextScore)
+            WRITELN('РќРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ: ', NextScore)
           ELSE
             BEGIN   
               TotalScore := TotalScore + NextScore;
