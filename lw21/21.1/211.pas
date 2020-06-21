@@ -66,7 +66,7 @@ BEGIN {Encryption}
   WHILE NOT EOF
   DO
     BEGIN
-      читать строку в Msg и распечатать ее}
+    {читать строку в Msg и распечатать ее}
       Lenght := 0;
       WHILE NOT(EOLN) AND (Lenght < Len)
       DO
