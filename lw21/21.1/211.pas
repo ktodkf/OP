@@ -1,18 +1,20 @@
 PROGRAM Encryption(INPUT, OUTPUT);
-{Переводит символы из INPUT в код согласно Chiper
-и печатает новые символы в OUTPUT}
+{Переводит символы из INPUT в код согласно Chiper 
+ и печатает новые символы в OUTPUT}
 CONST
   Len = 20;
+  Symbols = [' ', 'A' .. 'Z'];
 TYPE
   Str = ARRAY [1 .. Len] OF 'A' .. 'Z';
   Chiper = ARRAY [' ' .. 'Z'] OF CHAR;
+  StrLen = 0 .. Len;
 VAR
   Msg: Str;
   Code: Chiper;
-  I: 0 .. Len;
+  Lenght: StrLen;
  
 PROCEDURE Initialize(VAR Code: Chiper);
-{Присвоить Code ширф замены}
+{Присвоить Code шифр замены}
 BEGIN {Initialize} 
   Code['A'] := 'Z';
   Code['B'] := 'Y';
@@ -43,40 +45,37 @@ BEGIN {Initialize}
   Code[' '] := '%'
 END;  {Initialize}
  
-PROCEDURE Encode(VAR S: Str; I: INTEGER);
+PROCEDURE Encode(VAR S: Str; Lenght: StrLen);
 {Выводит символы из Code,соответствующие символам из S}
 VAR
-  Index: 1 .. Len;
-BEGIN {Encode}
-  FOR Index := 1 TO Len
+  Index: StrLen;
+BEGIN{Encode}
+  FOR Index := 1 TO Lenght
   DO
-    IF S[Index] IN ['A' .. 'Z'] + [' ']
+    IF S[Index] IN Symbols
     THEN
       WRITE(Code[S[Index]])
     ELSE
       WRITE(S[Index]);
   WRITELN
-END;  {Encode}
+END;{Encode}
  
 BEGIN {Encryption}
-  {ИНициализировать Code}
+  {Инициализировать Code}
   Initialize(Code);
   WHILE NOT EOF
   DO
     BEGIN
-      {читать строку в Msg и распечатать ее}
-      I := 0;
-      WHILE NOT EOLN AND (I < Len)
+      читать строку в Msg и распечатать ее}
+      Lenght := 0;
+      WHILE NOT(EOLN) AND (Lenght < Len)
       DO
         BEGIN
-          I := I + 1;
-          READ(Msg[I]);
-          WRITE(Msg[I])
-        END;
+          Lenght := Lenght + 1;
+          READ(Msg[Lenght]);
+        END;     
       READLN;
-      WRITELN;
       {распечатать кодированное сообщение}
-      Encode(Msg, I)
+      Encode(Msg, Lenght)
     END
 END.  {Encryption}
-
