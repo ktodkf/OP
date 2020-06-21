@@ -1,35 +1,35 @@
 PROGRAM Stat(INPUT, OUTPUT);
 VAR
-  Min, Max, Sum, Digit, CountDigit: INTEGER;
+  Min, Max, Sum, Number, CountDigit: INTEGER;
   Overflow: BOOLEAN;
   
 PROCEDURE ReadDigit(VAR F: TEXT; VAR D: INTEGER);
 VAR
   Ch: CHAR;
-BEGIN  {ReadDigit}
+BEGIN{ReadDigit}
   READ(F, Ch);
-  IF Ch = '0' THEN D := 0 ELSE
-  IF Ch = '1' THEN D := 1 ELSE
-  IF Ch = '2' THEN D := 2 ELSE
-  IF Ch = '3' THEN D := 3 ELSE
-  IF Ch = '4' THEN D := 4 ELSE
-  IF Ch = '5' THEN D := 5 ELSE
-  IF Ch = '6' THEN D := 6 ELSE
-  IF Ch = '7' THEN D := 7 ELSE
-  IF Ch = '8' THEN D := 8 ELSE
-  IF Ch = '9' THEN D := 9 ELSE
-  D := -1
+  D := -1;
+  IF (Ch = '0') THEN D := 0 ELSE
+  IF (Ch = '1') THEN D := 1 ELSE
+  IF (Ch = '2') THEN D := 2 ELSE
+  IF (Ch = '3') THEN D := 3 ELSE
+  IF (Ch = '4') THEN D := 4 ELSE
+  IF (Ch = '5') THEN D := 5 ELSE
+  IF (Ch = '6') THEN D := 6 ELSE
+  IF (Ch = '7') THEN D := 7 ELSE
+  IF (Ch = '8') THEN D := 8 ELSE
+  IF (Ch = '9') THEN D := 9 
 END;{ReadDigit}
 
 PROCEDURE ReadNumber(VAR F: TEXT; VAR N: INTEGER);
-{Преобразует строку цифр из файла до первого нецифрованного символа,
-в соответствующее целое цисло N}
+{Преобразует строку цифр из файла до первого нецифрового символа,
+ в соответствующее целое число N}
 VAR
   Digit: INTEGER; 
 BEGIN{ReadNumber}
   Digit := 0;
   N:=0; 
-  WHILE (NOT EOLN) AND (Digit <> -1) AND ( N <> -1)
+  WHILE (Digit <> -1) AND ( N <> -1)
   DO
     BEGIN 
       ReadDigit(INPUT, Digit);
@@ -44,31 +44,32 @@ BEGIN{ReadNumber}
             N := -1
     END        
 END;{ReadNumber}
-BEGIN
+
+BEGIN{Stat}
   Max := 0;
   Min := MAXINT;
   Sum := 0;
-  Digit := 0;
+  Number := 0;
   CountDigit := 0;
   Overflow := FALSE;
   WHILE (NOT Overflow) AND (NOT EOLN)
   DO
     BEGIN
-      ReadNumber(INPUT, Digit);
-      Overflow := (CountDigit >= MAXINT - 1) OR (Digit = -1) OR (Sum > (MAXINT - Digit));
+      ReadNumber(INPUT, Number);
+      Overflow := (CountDigit >= MAXINT - 1) OR (Number = -1) OR (Sum > (MAXINT - Number));
       IF Overflow
       THEN
         WRITELN('Введено неверное значение или переполнение')
       ELSE
         BEGIN 
           CountDigit := CountDigit + 1;
-          Sum := Sum + Digit;
-          IF (Max < Digit)
+          Sum := Sum + Number;
+          IF (Max < Number)
           THEN
-            Max := Digit;
-          IF (Min > Digit)
+            Max := Number;
+          IF (Min > Number)
           THEN
-            Min := Digit;  
+            Min := Number;  
         END  
     END;
   IF (NOT Overflow)
@@ -84,23 +85,4 @@ BEGIN
       ELSE
         WRITELN('Ничего не введено')
     END    
-END.  
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+END.{Stat}  
